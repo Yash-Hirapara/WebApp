@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="icon" href="{% static 'images/2.webp' %}" type="image/x-icon" />
+{% endblock head %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<div class="container-fluid px-0">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img src="{% static 'images/1.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Welcome To Refreshinng Hub Tea Stall</h5>
+          <p>Hey Buddy,Feeling Sleepy! Have A Cup of TEA</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{% static 'images/2.jpg' %}" class="d-block w-100" alt="...">
+        <div
+          class="carousel-caption d-none d-md-block p-3 bg-dark bg-opacity-50 border border-dark border-start-0 rounded-end">
+          <h5>Netflix , Coffee & Chill</h5>
+          <p>Try Sandwiches , FrenchFries and Noodles Also.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{% static 'images/3.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Have A Good Day.</h5>
+          <p>How Was Our Service! Don't Forget to Give A Feedback.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+<div class="album py-3 bg-light">
+  <div class="container-fluid">
+    <h1 style="font-family:cursive ;" id="manu" class="float text-center py-5"><img
+        src="{% static 'icons/large icons/icons8-cookbook-100.png' %}" alt=""> Our Manu <img
+        src="{% static 'icons/large icons/icons8-cookbook-100.png' %}" alt=""></h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/greentea.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/small icons/icons8-mint-48.png' %}" alt=""> Green Tea</p>
+            {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Green Tea">
+                  <input type="hidden" name="itemprice" value="20">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.20/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/blacktea.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/icons8-cafe-48.png' %}" alt=""> Black Tea</p>
+            {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Black Tea">
+                  <input type="hidden" name="itemprice" value="20">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.20/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/chai.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/icons8-coffee-48.png' %}" alt=""> Indian-Masala Tea</p>
+            {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Indian Masala Tea">
+                  <input type="hidden" name="itemprice" value="15">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.15/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/coffee1.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/icons8-coffee-to-go-48(1).png' %}" alt=""> Hot Coffee</p>
+            {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Hot Coffee">
+                  <input type="hidden" name="itemprice" value="30">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.30/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/cold_brew_coffee.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/small icons/icons8-kawaii-coffee-50.png' %}" alt=""> Cold
+              Brew
+              Coffee</p>
+              {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Cold Brew Coffee">
+                  <input type="hidden" name="itemprice" value="50">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.50/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/icecreamcoffee.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/icons8-iced-coffee-48.png' %}" alt=""> Cold Coffee With ICE
+              Cream
+            </p>
+            {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Cold Coffee With Icecream">
+                  <input type="hidden" name="itemprice" value="70">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.70/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/noodles.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/small icons/icons8-noodles-50.png' %}" alt=""> Masala
+              Noodles</p>
+              {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Masala Noodles">
+                  <input type="hidden" name="itemprice" value="50">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.50/-</small>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">Login To Order</small>
+          </div>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/sandwich.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/small icons/icons8-bitten-sandwich-50.png' %}" alt="">
+              Grilled
+              Green Sandwich</p>
+              {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="Green Grilled Sandwich">
+                  <input type="hidden" name="itemprice" value="50">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.50/-</small>
+            </div>
+              {% else %}
+              <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">Login To Order</small>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img src="{% static 'images/frenchfries1.jpg' %}" class="d-block w-100" alt="...">
+          <div class="card-body">
+            <p class="card-text"><img src="{% static 'icons/small icons/icons8-french-fries-50.png' %}" alt=""> French
+              Fries
+            </p>
+            {% if user is not none %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/basket" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="itemname" value="French Fries">
+                  <input type="hidden" name="itemprice" value="30">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Order</button>
+                </form>
+              </div>
+              <small class="text-muted">Rs.30/-</small>
+            </div>
+              {% else %}
+              <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">Login To Order</small>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="d-flex flex-wrap justify-content-between align-items-center bg-dark px-0 py-3 my-0 border-top">
+  <p class="col-md-4 mb-0 text-white">© 2022 Refreshing Hub Tea Inc</p>
+
+  <a href="/"
+    class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <img src="{% static 'icons/icons8-restaurant-96.png' %}" alt="">
+  </a>
+
+  <ul class="nav col-md-4 justify-content-end">
+    <li class="nav-item"><a href="contactus" class="nav-link px-2 text-white">Contact Us</a></li>
+    <li class="nav-item"><a href="about" class="nav-link px-2 text-white">About Us</a></li>
+  </ul>
+</footer>
+{% endblock body %}

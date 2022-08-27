@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="icon" href="{% static 'images/2.webp" type="image/x-icon' %}" />
+{% endblock head %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block body %}
+<style>
+  body {
+      display:grid;
+      overflow-x: hidden;
+  }
+</style>
+<div class="container-fluid mx-0 px-0">
+    <img style="height:70vh" src="{% static 'images/luke-porter-ohBhECoxQoU-unsplash.jpg' %}" class="d-block w-100" alt="...">
+</div>
+<div class="container-fluid">
+    <h2 class="text-center my-5">Contact Us</h2>
+</div>
+<div class="container-fluid px-0">
+    <form class="row g-3" method="post" action="contactus">
+        {% csrf_token %}
+        <div class="col-md-4">
+          <label for="validationDefault01" class="form-label"><img src="{% static 'icons/icons8-bookmark-48.png' %}" alt="">First name</label>
+          <input type="text" class="form-control" name="fname" id="validationDefault01" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefault02" class="form-label"><img src="{% static 'icons/icons8-bookmark-48.png' %}" alt="">Last name</label>
+          <input type="text" class="form-control" name="lname" id="validationDefault02" required>
+        </div>
+        <div class="col-md-4">
+          <label for="validationDefaultUsername" class="form-label"><img src="{% static 'icons/icons8-mail-48.png' %}" alt="">Email-Id</label>
+          <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend2">Email</span>
+            <input type="email" class="form-control" name="email" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label"><img src="{% static 'icons/icons8-place-marker-48.png' %}" alt="">City</label>
+          <input type="text" class="form-control" name="city" id="validationDefault03" required>
+        </div>
+        <div class="col-md-6">
+          <label for="validationDefault03" class="form-label"><img src="{% static 'icons/icons8-contact-48.png' %}" alt="">Phone No.</label>
+          <input type="text" class="form-control" name="phone_no" id="validationDefault03" required>
+        </div>
+        <div class="mb-3">
+            <label for="validationTextarea" class="form-label"><img src="{% static 'icons/icons8-hand-with-pen-48.png' %}" alt=""> Contact Reason</label>
+            <textarea class="form-control" name="contact_reason" id="validationTextarea" placeholder="Enter Reason For Contacting... Or Any Feedback." required></textarea>
+            <div class="invalid-feedback">
+                Enter Reason For Contacting... Or Any Feedback.
+        </div>
+        <div class="col-12 py-3">
+          <button class="btn btn-outline-success" type="submit">Submit form</button>
+        </div>
+      </form>
+</div>
+<div class="container-fluid mx-0 my-0 px-0 py-0">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center bg-dark mx-0 px-0 py-3 my-0 border-top">
+        <p class="col-md-4 mb-0 text-white">© 2022 Refreshing Hub Tea Inc</p>
+      
+        <a href="/"
+          class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <img src="{% static 'icons/icons8-restaurant-96.png' %}" alt="">
+        </a>
+      
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="/contactus" class="nav-link px-2 text-white">Contact Us</a></li>
+          <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About Us</a></li>
+        </ul>
+      </footer>
+</div>
+{% endblock body %}

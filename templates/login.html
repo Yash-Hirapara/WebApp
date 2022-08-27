@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Refreshing Hub Tea</title>
+    <link rel="icon" href="{% static 'images/2.webp' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css.map' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css.map' %}">
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js.map' %}"></script>
+</head>
+
+<body>
+    <style>
+        .backimg {
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .card {
+            background: darkgray;
+        }
+    </style>
+    <div class="backimg" style="background-image:url(/static/images/kiyun-lee-3PILPw4O80w-unsplash.jpg);">
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="card" style="width: 25rem; margin-top: 9%;">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Welcome To Redreshing Hub Tea<p>Login Here</p></h5>
+                    <form class="row g-3" method="post">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <label for="validationDefaultUsername" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                <input type="text" name="uname" class="form-control" id="validationDefaultUsername"
+                                    aria-describedby="inputGroupPrepend2" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="validationDefault02" class="form-label">Password</label>
+                            <input type="password" name="passwd" class="form-control" id="validationDefault02" required>
+                        </div>
+                        <div class="col-12 py-3">
+                            <button class="btn btn-dark mx-3" type="submit">Login</button>
+                            <a class="btn btn-dark mx-4" href="/signup">New User! Signup Here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

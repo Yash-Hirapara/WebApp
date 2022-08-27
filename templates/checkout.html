@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'icons/icons8-shopping-cart-48.png' %}" type="image/x-icon" />
+    <title>Checkout Here</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css.map' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css.map' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var price;
+            var totalbill = 0;
+            $('td:nth-child(2)').each(function () {
+                price = $(this).html();
+                totalbill += parseInt(price);
+                $('#totalbill').text(totalbill);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <!-- Navbar Starts -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <img src="{% static 'icons/output-onlinegiftools (2).gif' %}" height="42"
+                    width="42" alt=""> Order Cart </a>
+            <div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <form class="d-flex">
+                    <a href="/" class="btn btn-outline-light">Home</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar Ends -->
+
+    <!-- Order Table Starts -->
+    {% if empty %}
+    <h2 class="text-center text-uppercase my-3">Cart Is Empty</h2>
+    <div style="text-align:center ;"><img src="{% static 'icons/icons8-cat.gif' %}"></div>
+
+    {% else %}
+    <h2 class="text-center text-uppercase my-3">Your Orders</h2>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Item Name</th>
+            <th>Item Price</th>
+            <th style="text-align:end ;">Remove Item</th>
+        </tr>
+        {% for i in ord %}
+        <tr>
+            <td>{{i.itemname}}</td>
+            <td>{{i.itemprice}}</td>
+            <td style="text-align:end ;"><a class="btn btn-outline-danger" href="/removeitem/{{i.id}}">Remove Item</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3" style="text-align:center ;">
+                <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Generate
+                    Bill</a>
+            </td>
+        </tr>
+    </table>
+    {% endif %}
+    <!-- Order Table Ends -->
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><img
+                            src="{% static 'icons/icons8-food-service-48.png' %}"> Your Bill</h5>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <h3><img src="{% static 'icons/icons8-restaurant-48.png' %}"> Generated Bill</h3>
+                    </center>
+                    <div class="row justify-content-evenly py-3">
+                        <div class="col-4" style="font-weight:bold ; font-size: larger;">
+                            Total Bill Is :
+                        </div>
+                        <div class="col-2" style="font-weight:bold ; font-size: larger;" id="totalbill">
+
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <a href="/finalbill" class="btn btn-warning">Checkout</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ends -->
+    <script>
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus()
+        })
+    </script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js.map' %}"></script>
+</body>

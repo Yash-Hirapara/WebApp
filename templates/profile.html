@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'icons/icons8-user-location-48.png' %}" type="image/x-icon" />
+    <title>profile</title>
+    <link rel="stylesheet" href="{% static 'profile/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/css/Navbar-Centered-Links-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'profile/css/styles.css' %}">
+    <style>
+        .card {
+            background: black;
+            opacity: calc(0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md py-3" style="background: var(--bs-body-color);">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-fill">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                    </svg></span><span style="color: var(--bs-body-bg);">User Profile</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3" style="border-color: var(--bs-body-bg);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon" style="color: var(--bs-gray-300);"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-3">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: var(--bs-body-bg);">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/updateprofile" style="color: var(--bs-body-bg);">Update Profile</a></li>
+                    <li class="nav-item"></li>
+                </ul><a class="btn btn-primary" href="/" style="background: var(--bs-body-color);border-color: var(--bs-body-bg);">Home</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Profile Code Starts -->
+    <div class="container my-5">
+        <div class="card" style="width:80vw;">
+            <div class="card-body">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <center>
+                            <img class="bd-placeholder-img rounded-circle" width="140" height="140"
+                                src="{% static 'icons/icons8-male-user-96.png' %}" alt="">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="font-monospace" style="color:whitesmoke ;">{{cuser.uname}}</h3>
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="font-monospace" style="color:whitesmoke ;">{{cuser.email_id}}</h5>
+                                </div>
+                                <div class="col-12 my-5">
+                                    <a class="btn btn-primary" href="/updateprofile">Update Profile</a>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="col-md-8">
+                        <center>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="col-md-6">
+                                    <label style="color:whitesmoke ;" for="validationDefault01" class="form-label">First
+                                        name</label>
+                                    <input type="text" name="firstname" class="form-control" id="validationDefault01"
+                                        value=" {{cuser.firstname}} " disabled readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label style="color:whitesmoke ;" for="validationDefault02" class="form-label">Last
+                                        name</label>
+                                    <input type="text" name="lastname" class="form-control" id="validationDefault02"
+                                        value=" {{cuser.lastname}} " disabled readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationDefaultUsername" style="color:whitesmoke;"
+                                        class="form-label">Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                        <input type="text" name="uname" value=" {{cuser.uname}} " class="form-control"
+                                            id="validationDefaultUsername" aria-describedby="inputGroupPrepend2"
+                                            disabled readonly required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label style="color:whitesmoke ;" for="validationDefault02"
+                                        class="form-label">Email-Id</label>
+                                    <input type="email" name="email_id" class="form-control" id="validationDefault02"
+                                        value=" {{cuser.email_id}} " disabled readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label style="color:whitesmoke ;" for="validationDefault03"
+                                        class="form-label">Contact
+                                        No.</label>
+                                    <input type="tel" name="contact_no" class="form-control" id="validationDefault03"
+                                        value=" {{cuser.contact_no}} " disabled readonly required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationDefault03" style="color: whitesmoke;"
+                                        class="form-label">City</label>
+                                    <input type="text" value=" {{cuser.city_name}} " name="city_name"
+                                        class="form-control" id="validationDefault03" disabled readonly required>
+                                </div>
+                            </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Profile Code Ends -->
+    <script src="{% static 'profile/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

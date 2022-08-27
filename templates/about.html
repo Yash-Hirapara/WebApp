@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="icon" href="{% static 'images/2.webp' %}" type="image/x-icon" />
+<link rel="stylesheet" href="{% static 'css/hover.css' %}">
+{% endblock head %}
+
+
+{% block title %}
+About Us
+{% endblock title %}
+
+{% block body %}
+<style>
+    body {
+        display: table-cell;
+        overflow-x: hidden;
+    }
+</style>
+<!-- About Us Card -->
+<center style="font-family: Playfair Display;
+letter-spacing: 5px; font-size: 60px;">About Us</center>
+
+<hr class="featurette-divider">
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">The way to the soul is through a cup of tea!
+            <p class="text-muted" style="font-family: Playfair Display;
+                letter-spacing: 3px; margin-top: 30px;">
+                Tea is not just a beverage in India-it is an emotion. It is the
+                ultimate remedy that
+                not only relieves stress
+                but also soothes the soul. From chai stalls in the smallest street corners to high-end malls,
+                Indians
+                are
+                seen
+                sipping on a hot cup of tea everywhere.
+            </p>
+
+        </h2>
+    </div>
+    <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto hvr-float-shadow" width="500"
+            height="500" src="{% static '/images/about3.avif' %}">
+        </img>
+
+    </div>
+</div>
+
+<hr class="featurette-divider">
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1 text-muted"
+            style="font-family: Playfair Display; letter-spacing: 3px;">We understand the importance of a good cup of
+            tea- we really do! At Refreshing Hub Tea, we ensure that every
+            cup
+            served is freshly brewed and meets the hallmarks of taste and quality every single time. The secret to a
+            good
+            cup of tea is the love of the person who makes it. Therefore, we have a team of experienced chai makers who
+            ensure that each cup is filled with love!</h2>
+        <div class="container d-flex justify-content-end">
+            <a href="https://github.com/Yash-Hirapara"><img class="hvr-bob" src="{% static 'icons/icons8-github-48.png' %}" alt=""></a>
+            <a href="https://twitter.com/YashHirapara19"><img class="hvr-bob" src="{% static 'icons/icons8-twitter-48.png' %}" alt=""></a>
+            <a href="https://www.instagram.com/h_yash.07/"><img class="hvr-bob" src="{% static 'icons/icons8-instagram-48.png' %}" alt=""></a>
+            <a href="https://www.linkedin.com/in/yash-hirapara"><img class="hvr-bob" src="{% static 'icons/icons8-linkedin-48.png' %}"
+                    alt=""></a>
+        </div>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto hvr-float-shadow"
+            src="{% static 'images/about4.avif' %}" height="500" width="500">
+        </img>
+
+    </div>
+</div>
+<hr class="featurette-divider">
+<!-- about Us Card End -->
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center bg-dark px-0 py-0 my-0 border-top">
+    <p class="col-md-4 mb-0 text-white">© 2022 Refreshing Hub Tea Inc</p>
+
+    <a href="/"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <img src="{% static 'icons/icons8-restaurant-96.png' %}" alt="">
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="/contactus" class="nav-link px-2 text-white">Contact Us</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link px-2 text-white">About Us</a></li>
+    </ul>
+</footer>
+{% endblock body %}
